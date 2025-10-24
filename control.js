@@ -32,7 +32,7 @@ const configuracoes = {
     },
     
     // Tempo de pausa em segundos (3 minutos = 180 segundos)
-    pauseTime: 171,
+    pauseTime: 145,
     
     // Configurações do GIF Seta (em pixels)
     seta: {
