@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Plataforma de Ensino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ========================================
+         ÁREA PRINCIPAL DO VÍDEO
+         ======================================== -->
+    <div id="videoContainer">
+        <!-- Botão único de início -->
+        <button id="startButton" class="start-button">
+            ▶️ Iniciar Aula Demonstração
+        </button>
+        
+        <!-- Elemento do vídeo -->
+        <video id="mainVideo">
+            <source src="Atingirmeta.mp4" type="video/mp4">
+            <p>Seu navegador não suporta a reprodução de vídeo HTML5.</p>
+        </video>
+        
+        <!-- Container para elementos sobrepostos -->
+        <div id="overlay">
+            <!-- GIF do Professor -->
+            <img id="professorGif" src="Professor.gif" alt="Professor">
+            
+            <!-- Retângulo vermelho (área clicável) -->
+            <div id="redOverlay"></div>
+            
+            <!-- GIF da Seta -->
+            <img id="setaGif" src="Seta.gif" alt="Seta">
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="control.js"></script>
+</body>
+</html>

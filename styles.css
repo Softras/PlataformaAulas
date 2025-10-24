@@ -1,0 +1,289 @@
+/* ========================================
+   CONFIGURAÇÕES CSS GLOBAIS
+   ======================================== */
+
+/* Reset básico para garantir funcionamento em diferentes navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração do corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* ========================================
+   BOTÃO DE INÍCIO E SEÇÃO DO VÍDEO
+   ======================================== */
+
+/* Container principal do vídeo */
+#videoContainer {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+}
+
+/* Botão de início - centralizado */
+#startButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    padding: 25px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#startButton:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+#startButton:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* Esconder botão quando iniciar */
+#startButton.hidden {
+    display: none;
+}
+
+/* Elemento do vídeo */
+#mainVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* Inicialmente oculto */
+}
+
+#mainVideo.playing {
+    display: block; /* Mostrar quando começar a tocar */
+}
+
+/* ========================================
+   OVERLAYS E ELEMENTOS SOBREPOSTOS
+   ======================================== */
+
+/* Overlay container para elementos sobrepostos */
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* GIF do Professor */
+#professorGif {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    /* Valores em pixels absolutos */
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Retângulo vermelho semi-transparente */
+#redOverlay {
+    position: absolute;
+    display: none;
+    background: rgba(255, 0, 0, 0.5);
+    cursor: pointer;
+    pointer-events: auto;
+    /* Valores em pixels absolutos */
+    width: 300px;
+    height: 150px;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    transition: background-color 0.3s;
+}
+
+/* Efeito hover no retângulo */
+#redOverlay:hover {
+    background: rgba(255, 0, 0, 0.7);
+}
+
+/* GIF da Seta */
+#setaGif {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    /* Valores em pixels absolutos */
+    width: 80px;
+    height: 80px;
+    top: 50px;
+    right: 100px;
+}
+
+
+
+/* Animação de pulso para o indicador */
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: translate(-50%, -50%) scale(1.1); 
+    }
+}
+
+
+
+/* ========================================
+   ANIMAÇÕES E EFEITOS VISUAIS
+   ======================================== */
+
+/* Fade in para elementos aparecendo */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide in para elementos aparecendo */
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bounce para elementos clicáveis */
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    /* Adaptações específicas para tela menor se necessário */
+}
+
+/* ========================================
+   ESTADOS DE CARREGAMENTO
+   ======================================== */
+
+/* Overlay de carregamento */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    flex-direction: column;
+}
+
+/* Spinner de carregamento */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Texto de carregamento */
+.loading-text {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ========================================
+   ACESSIBILIDADE
+   ======================================== */
+
+/* Foco para navegação por teclado */
+#redOverlay:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Estados de alta contraste */
+@media (prefers-contrast: high) {
+    #redOverlay {
+        border: 4px solid white;
+    }
+}
+
+/* Redução de movimento para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .pulse,
+    .fade-in,
+    .slide-in,
+    .bounce,
+    .spinner {
+        animation: none;
+    }
+}
